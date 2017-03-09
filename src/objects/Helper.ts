@@ -11,7 +11,7 @@ module GameName.Client {
             if (!radius) {
                 distance = Math.ceil(game.world.width / (objs.length + 1));
                 objs.forEach(element => {
-                    element.anchor.setTo(0.5);    
+                    element.anchor.setTo(0.5);
                     currentX += distance;
                     element.x = currentX;
                     console.log(currentX);
@@ -27,6 +27,9 @@ module GameName.Client {
                     currentX += radius;
                 });
             }
+        }
+        static EnableCenterAnchor(spr: Phaser.Sprite) {
+            spr.anchor.setTo(0.5);
         }
         static myLog(message: any) {
             if (GameConfig.DEBUG_MODE) console.log(message);
