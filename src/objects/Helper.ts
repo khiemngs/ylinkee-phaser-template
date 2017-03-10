@@ -1,6 +1,6 @@
 namespace GameName.Client {
-    export class Helper { // helper functions
-        static getRandomInt(min, max) {
+    export class Utils { // helper functions
+        static GetRandomInt(min, max) {
             min = Math.ceil(min);
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min)) + min;
@@ -31,7 +31,7 @@ namespace GameName.Client {
         static EnableCenterAnchor(spr: Phaser.Sprite) {
             spr.anchor.setTo(0.5);
         }
-        static myLog(message: any) {
+        static Log(message: any) {
             if (GameConfig.DEBUG_MODE) console.log(message);
         }
     }
