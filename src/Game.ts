@@ -1,10 +1,7 @@
-namespace GameName.Client{
-    class SimpleGame extends Phaser.Game
-    {
+namespace GameName.Client {
+    class SimpleGame extends Phaser.Game {
         game: Phaser.Game;
-
-        constructor()
-        {
+        constructor() {
                 super(320, 500, Phaser.AUTO, "canvas", null);
                 this.state.add("Boot", Boot, false);
                 this.state.add("Preloader", Preloader, false);
@@ -14,7 +11,6 @@ namespace GameName.Client{
                 this.state.start("Boot");
         }
     }
-
     // when the page has finished loading, create our game
     window.onload = () => {
         let game = new SimpleGame();
