@@ -1,4 +1,4 @@
-module GameName.Client {
+namespace GameName.Client {
     export class Helper { // helper functions
         static getRandomInt(min, max) {
             min = Math.ceil(min);

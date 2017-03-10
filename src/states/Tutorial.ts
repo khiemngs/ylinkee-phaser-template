@@ -1,9 +1,9 @@
-module GameName.Client {
+namespace GameName.Client {
 
     export class Tutorial extends Phaser.State {
 
         create() {
-     
+
         }
 
         startGame() {
