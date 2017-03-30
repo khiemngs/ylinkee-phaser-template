@@ -1,0 +1,24 @@
+{
+  "name": "ylinkee-phaser-boilerplate",
+  "version": "0.3.1",
+  "description": "Quick init new game and blow up  your creative head ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khiemngs/ylinkee-phaser-template.git"
+  },
+  "keywords": [
+    "phaser",
+    "boilerplate",
+    "ylinkee"
+  ],
+  "author": "khiemngs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/khiemngs/ylinkee-phaser-template/issues"
+  },
+  "homepage": "https://github.com/khiemngs/ylinkee-phaser-template#readme"
+}
