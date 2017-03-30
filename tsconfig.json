@@ -1,7 +1,15 @@
 {
 	"compilerOptions": {
-		"target": "ES5",
 		"module": "amd",
-		"sourceMap": false
-	}
+		"moduleResolution": "node",
+		"target": "es5",
+		"outDir": "dist"
+	},
+	"exclude": [
+		".tscache",
+		"dist",
+		"node_modules",
+		"templates",
+		"test-data"
+	]
 }

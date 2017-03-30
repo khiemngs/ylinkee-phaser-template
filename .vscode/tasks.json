@@ -1,27 +1,20 @@
 // Compiles a TypeScript program
 {
 	"version": "0.1.0",
-	"tasks": [
-		{
-			"taskName": "tsc",
-			"command": "tsc",
-			"isShellCommand": true,
-			"args": [
-				"--out",
-				"bin/js/game.js"
-			],
-			"problemMatcher": "$tsc"
-		},
-		{
-			"taskName": "build",
-			"command": "uglifyjs",
-			"args": [
-				"bin/js/game.js",
-				"--output",
-				"bin/js/game.min.js"
-			],
-			"isBuildCommand": true,
-			"isShellCommand": true
-		}
-	]
+	
+	// The command is tsc. Assumes that tsc has been installed using npm install -g typescript
+	"command": "tsc",
+	
+	// The command is a shell script
+	"isShellCommand": true,
+
+	// Show the output window only if unrecognized errors occur. 
+	"showOutput": "silent",
+	
+	// The args to pass to the typescript compiler
+	"args": ["--out","bin/js/game.js"],
+	
+	// use the standard tsc problem matcher to find compile problems
+	// in the output.
+	"problemMatcher": "$tsc"
 }

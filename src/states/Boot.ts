@@ -36,11 +36,11 @@ namespace GameName.Client {
             this.stage.disableVisibilityChange = true;
             let t = false;
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-            var parentWidth = document.getElementById('canvas').clientWidth,
-                parentHeight = document.getElementById('canvas').clientHeight,
+            let parentWidth = document.getElementById("canvas").clientWidth,
+                parentHeight = document.getElementById("canvas").clientHeight,
                 gameHeight = GameConfig.SOURCE_GAME_HETGHT,
                 gameWidth = GameConfig.SOURCE_GAME_WIDTH;
-            var matchedHorizon = gameWidth / gameHeight > parentWidth / parentHeight;
+            let matchedHorizon = gameWidth / gameHeight > parentWidth / parentHeight;
             if (matchedHorizon) {
                 this.scale.minWidth = parentWidth;
                 this.scale.minHeight = parentWidth / gameWidth * gameHeight;
@@ -53,7 +53,7 @@ namespace GameName.Client {
                 this.scale.maxHeight = parentHeight;
             }
             //  this.scale.setGameSize(200, 300);
-            //this.scale.forcePortrait = true;
+            // this.scale.forcePortrait = true;
             this.scale.pageAlignHorizontally = true;
             this.scale.pageAlignVertically = true;
             this.scale.refresh();

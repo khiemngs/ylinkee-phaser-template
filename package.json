@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/khiemngs/ylinkee-phaser-template/issues"
   },
-  "homepage": "https://github.com/khiemngs/ylinkee-phaser-template#readme"
+  "homepage": "https://github.com/khiemngs/ylinkee-phaser-template#readme",
+  "devDependencies": {
+    "tslint": "^5.0.0",
+    "typescript": "^2.2.2",
+    "uglifyjs": "^2.4.10"
+  }
 }

@@ -149,34 +149,31 @@ var GameName;
                 Client.GameConfig.GAME_HEIGHT = this.game.canvas.height / worldScale;
             };
             Boot.prototype.create = function () {
-                var _this = this;
                 console.log(Client.GameConfig.DEBUG_MODE ? "Debug on" : "Debug off");
                 this.stage.setBackgroundColor(0x95A5A6);
                 this.input.maxPointers = 1;
                 this.stage.disableVisibilityChange = true;
                 var t = false;
-                if (this.game.device.desktop) {
-                    // desktop
-                    var s = this.game.scale;
-                    s.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-                    s.aspectRatio = Client.GameConfig.GAME_WIDTH / Client.GameConfig.GAME_HEIGHT;
-                    s.pageAlignHorizontally = true;
-                    s.pageAlignVertically = true;
-                    s;
-                    // this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+                this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+                var parentWidth = document.getElementById("canvas").clientWidth, parentHeight = document.getElementById("canvas").clientHeight, gameHeight = Client.GameConfig.SOURCE_GAME_HETGHT, gameWidth = Client.GameConfig.SOURCE_GAME_WIDTH;
+                var matchedHorizon = gameWidth / gameHeight > parentWidth / parentHeight;
+                if (matchedHorizon) {
+                    this.scale.minWidth = parentWidth;
+                    this.scale.minHeight = parentWidth / gameWidth * gameHeight;
+                    this.scale.maxWidth = parentWidth;
+                    this.scale.maxHeight = parentWidth / gameWidth * gameHeight;
                 }
                 else {
-                    // mobile
-                    var s = this.game.scale;
-                    s.scaleMode = Phaser.ScaleManager.EXACT_FIT;
-                    s.forceOrientation(false, true);
-                    s.onSizeChange.add(function (f) {
-                        _this.scaleGame();
-                        Client.Utils.Log(Client.GameConfig.GAME_WIDTH + "x" + Client.GameConfig.GAME_HEIGHT);
-                        _this.game.state.resize(Client.GameConfig.GAME_WIDTH, Client.GameConfig.GAME_HEIGHT);
-                    }, this);
-                    s.refresh();
+                    this.scale.minWidth = parentHeight / gameHeight * gameWidth;
+                    this.scale.minHeight = parentHeight;
+                    this.scale.maxWidth = parentHeight / gameHeight * gameWidth;
+                    this.scale.maxHeight = parentHeight;
                 }
+                //  this.scale.setGameSize(200, 300);
+                // this.scale.forcePortrait = true;
+                this.scale.pageAlignHorizontally = true;
+                this.scale.pageAlignVertically = true;
+                this.scale.refresh();
                 this.game.state.start("Preloader", true, false);
             };
             return Boot;
