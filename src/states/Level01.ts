@@ -1,15 +1,15 @@
-namespace GameName.Client {
-    export class Level01 extends Phaser.State {
-        create() {
-        }
-        update() {
-
-        }
-        GameOver() {
-
-        }
-        NextLevel() {
-
-        }
+namespace Template.Client {
+  export class Level01 extends Phaser.State {
+    public create() {
     }
+    public update() {
+
+    }
+    public GameOver() {
+
+    }
+    public NextLevel() {
+
+    }
+  }
 }

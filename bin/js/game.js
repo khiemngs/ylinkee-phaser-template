@@ -8,14 +8,14 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var GameName;
-(function (GameName) {
+var QuickChoice;
+(function (QuickChoice) {
     var Client;
     (function (Client) {
         var SimpleGame = (function (_super) {
             __extends(SimpleGame, _super);
             function SimpleGame() {
-                var _this = _super.call(this, 320, 500, Phaser.AUTO, "canvas", null) || this;
+                var _this = _super.call(this, Client.GameConfig.SOURCE_GAME_WIDTH, Client.GameConfig.SOURCE_GAME_HETGHT, Phaser.AUTO, "canvas", null) || this;
                 _this.state.add("Boot", Client.Boot, false);
                 _this.state.add("Preloader", Client.Preloader, false);
                 _this.state.add("MainMenu", Client.MainMenu, false);
@@ -30,11 +30,11 @@ var GameName;
         window.onload = function () {
             var game = new SimpleGame();
         };
-    })(Client = GameName.Client || (GameName.Client = {}));
-})(GameName || (GameName = {}));
+    })(Client = QuickChoice.Client || (QuickChoice.Client = {}));
+})(QuickChoice || (QuickChoice = {}));
 ;
-var GameName;
-(function (GameName) {
+var QuickChoice;
+(function (QuickChoice) {
     var Client;
     (function (Client) {
         var GameConfig = (function () {
@@ -44,16 +44,16 @@ var GameName;
         }());
         GameConfig.DEBUG_MODE = true;
         GameConfig.TEXT_STYLE_1 = { font: "bold 22px geometria", fill: "#000000", boundsAlignH: "center", boundsAlignV: "middle", align: "center" };
-        GameConfig.SOURCE_GAME_WIDTH = 320;
+        GameConfig.SOURCE_GAME_WIDTH = 400;
         GameConfig.SOURCE_GAME_HETGHT = 500;
         GameConfig.WORLD_SCALE = 0;
         GameConfig.GAME_WIDTH = 0;
         GameConfig.GAME_HEIGHT = 0;
         Client.GameConfig = GameConfig;
-    })(Client = GameName.Client || (GameName.Client = {}));
-})(GameName || (GameName = {}));
-var GameName;
-(function (GameName) {
+    })(Client = QuickChoice.Client || (QuickChoice.Client = {}));
+})(QuickChoice || (QuickChoice = {}));
+var QuickChoice;
+(function (QuickChoice) {
     var Client;
     (function (Client) {
         var GameManager = (function () {
@@ -63,11 +63,24 @@ var GameName;
         }());
         GameManager.level = 1;
         GameManager.firstTime = false;
+        GameManager.gridSize = 1;
         Client.GameManager = GameManager;
-    })(Client = GameName.Client || (GameName.Client = {}));
-})(GameName || (GameName = {}));
-var GameName;
-(function (GameName) {
+    })(Client = QuickChoice.Client || (QuickChoice.Client = {}));
+})(QuickChoice || (QuickChoice = {}));
+var QuickChoice;
+(function (QuickChoice) {
+    var Client;
+    (function (Client) {
+        var Grid = (function () {
+            function Grid() {
+            }
+            return Grid;
+        }());
+        Client.Grid = Grid;
+    })(Client = QuickChoice.Client || (QuickChoice.Client = {}));
+})(QuickChoice || (QuickChoice = {}));
+var QuickChoice;
+(function (QuickChoice) {
     var Client;
     (function (Client) {
         var Utils = (function () {
@@ -112,10 +125,10 @@ var GameName;
             return Utils;
         }());
         Client.Utils = Utils;
-    })(Client = GameName.Client || (GameName.Client = {}));
-})(GameName || (GameName = {}));
-var GameName;
-(function (GameName) {
+    })(Client = QuickChoice.Client || (QuickChoice.Client = {}));
+})(QuickChoice || (QuickChoice = {}));
+var QuickChoice;
+(function (QuickChoice) {
     var Client;
     (function (Client) {
         var Boot = (function (_super) {
@@ -179,18 +192,41 @@ var GameName;
             return Boot;
         }(Phaser.State));
         Client.Boot = Boot;
-    })(Client = GameName.Client || (GameName.Client = {}));
-})(GameName || (GameName = {}));
-var GameName;
-(function (GameName) {
+    })(Client = QuickChoice.Client || (QuickChoice.Client = {}));
+})(QuickChoice || (QuickChoice = {}));
+var QuickChoice;
+(function (QuickChoice) {
     var Client;
     (function (Client) {
         var Level01 = (function (_super) {
             __extends(Level01, _super);
             function Level01() {
-                return _super !== null && _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.heart = 3;
+                return _this;
             }
             Level01.prototype.create = function () {
+                this.images = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"];
+                this.iString = Client.Utils.GetRandomInt(1, 18).toString();
+            };
+            Level01.prototype.makeGrid = function (size) {
+                for (var i = 0; i < size; i++) {
+                    for (var j = 0; j < size; j++) {
+                        var img = this.game.add.sprite(this.getPosX(j), this.getPosY(i), this.iString);
+                        img.inputEnabled = true;
+                        img.events.onInputDown.add(this.check, this);
+                    }
+                }
+            };
+            Level01.prototype.check = function () {
+            };
+            Level01.prototype.getPosX = function (pos) {
+                var x;
+                return x;
+            };
+            Level01.prototype.getPosY = function (pos) {
+                var y;
+                return y + 100;
             };
             Level01.prototype.update = function () {
             };
@@ -201,10 +237,10 @@ var GameName;
             return Level01;
         }(Phaser.State));
         Client.Level01 = Level01;
-    })(Client = GameName.Client || (GameName.Client = {}));
-})(GameName || (GameName = {}));
-var GameName;
-(function (GameName) {
+    })(Client = QuickChoice.Client || (QuickChoice.Client = {}));
+})(QuickChoice || (QuickChoice = {}));
+var QuickChoice;
+(function (QuickChoice) {
     var Client;
     (function (Client) {
         var MainMenu = (function (_super) {
@@ -227,10 +263,10 @@ var GameName;
             return MainMenu;
         }(Phaser.State));
         Client.MainMenu = MainMenu;
-    })(Client = GameName.Client || (GameName.Client = {}));
-})(GameName || (GameName = {}));
-var GameName;
-(function (GameName) {
+    })(Client = QuickChoice.Client || (QuickChoice.Client = {}));
+})(QuickChoice || (QuickChoice = {}));
+var QuickChoice;
+(function (QuickChoice) {
     var Client;
     (function (Client) {
         var Preloader = (function (_super) {
@@ -241,6 +277,43 @@ var GameName;
             Preloader.prototype.preload = function () {
                 this.loaderText = this.game.add.text(this.world.centerX, 200, "Loading...", { font: "18px Arial", fill: "#A9A91111", align: "center" });
                 this.loaderText.anchor.setTo(0.5);
+                this.game.load.image("bg", "assets/sprites/bg.png");
+                //
+                this.game.load.image("1", "assets/sprites/1.png");
+                this.game.load.image("1e", "assets/sprites/1_.png");
+                this.game.load.image("2", "assets/sprites/2.png");
+                this.game.load.image("2e", "assets/sprites/2_2.png");
+                this.game.load.image("3", "assets/sprites/3.png");
+                this.game.load.image("3e", "assets/sprites/3_2.png");
+                this.game.load.image("4", "assets/sprites/4.png");
+                this.game.load.image("4e", "assets/sprites/4_2.png");
+                this.game.load.image("5", "assets/sprites/5.png");
+                this.game.load.image("5e", "assets/sprites/5_2.png");
+                this.game.load.image("6", "assets/sprites/6.png");
+                this.game.load.image("6e", "assets/sprites/6_2.png");
+                this.game.load.image("7", "assets/sprites/7.png");
+                this.game.load.image("7e", "assets/sprites/7_2.png");
+                this.game.load.image("8", "assets/sprites/8.png");
+                this.game.load.image("8e", "assets/sprites/8_2.png");
+                this.game.load.image("9", "assets/sprites/9.png");
+                this.game.load.image("9e", "assets/sprites/9_2.png");
+                this.game.load.image("10", "assets/sprites/10.png");
+                this.game.load.image("10e", "assets/sprites/10_2.png");
+                this.game.load.image("11", "assets/sprites/11.png");
+                this.game.load.image("11e", "assets/sprites/11_2.png");
+                this.game.load.image("12", "assets/sprites/12.png");
+                this.game.load.image("12e", "assets/sprites/12_2.png");
+                this.game.load.image("13", "assets/sprites/13.png");
+                this.game.load.image("13e", "assets/sprites/13_2.png");
+                this.game.load.image("14", "assets/sprites/14.png");
+                this.game.load.image("14e", "assets/sprites/14_2.png");
+                this.game.load.image("15", "assets/sprites/15.png");
+                this.game.load.image("15e", "assets/sprites/15_2.png");
+                this.game.load.image("16", "assets/sprites/16.png");
+                this.game.load.image("16e", "assets/sprites/16_2.png");
+                this.game.load.image("17", "assets/sprites/17.png");
+                this.game.load.image("17e", "assets/sprites/17_2.png");
+                //
             };
             Preloader.prototype.create = function () {
                 // var tween = this.add.tween(this.loaderText).to({ alpha: 0 }, 2000,
@@ -254,10 +327,10 @@ var GameName;
             return Preloader;
         }(Phaser.State));
         Client.Preloader = Preloader;
-    })(Client = GameName.Client || (GameName.Client = {}));
-})(GameName || (GameName = {}));
-var GameName;
-(function (GameName) {
+    })(Client = QuickChoice.Client || (QuickChoice.Client = {}));
+})(QuickChoice || (QuickChoice = {}));
+var QuickChoice;
+(function (QuickChoice) {
     var Client;
     (function (Client) {
         var Tutorial = (function (_super) {
@@ -273,5 +346,5 @@ var GameName;
             return Tutorial;
         }(Phaser.State));
         Client.Tutorial = Tutorial;
-    })(Client = GameName.Client || (GameName.Client = {}));
-})(GameName || (GameName = {}));
+    })(Client = QuickChoice.Client || (QuickChoice.Client = {}));
+})(QuickChoice || (QuickChoice = {}));
